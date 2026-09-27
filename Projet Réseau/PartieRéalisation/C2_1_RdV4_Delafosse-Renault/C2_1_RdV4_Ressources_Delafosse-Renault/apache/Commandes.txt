@@ -1,2 +1,0 @@
-htpasswd -c /etc/apache2/.htpasswd tonprenom
-systemctl start apache2
