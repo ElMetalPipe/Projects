@@ -1,0 +1,206 @@
+r-main-cisco(config-if)#do sh run                                               
+Building configuration...                                                       
+                                                                                
+                                                                                
+Current configuration : 3181 bytes                                              
+!                                                                               
+version 15.1                                                                    
+service timestamps debug datetime msec                                          
+service timestamps log datetime msec                                            
+no service password-encryption                                                  
+!                                                                               
+hostname r-main-cisco                                                           
+!                                                                               
+boot-start-marker                                                               
+boot system flash c2800nm-adventerprisek9-mz.151-3.T.bin                        
+boot-end-marker                                                                 
+!                                                                               
+!                                                                               
+enable password lannion                                                         
+!                                                                               
+no aaa new-model                                                                
+!                                                                               
+memory-size iomem 5                                                             
+!                                                                               
+dot11 syslog                                                                    
+ip source-route                                                                 
+!                                                                               
+!                                                                               
+ip cef                                                                          
+!                                                                               
+!                                                                               
+!                                                                               
+no ip domain lookup                                                             
+no ipv6 cef                                                                     
+!                                                                               
+multilink bundle-name authenticated                                             
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+voice-card 0                                                                    
+!                                                                               
+crypto pki token default removal timeout 0                                      
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+license udi pid CISCO2811 sn FCZ12157163                                        
+archive                                                                         
+ log config                                                                     
+  hidekeys                                                                      
+!                                                                               
+redundancy                                                                      
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+interface FastEthernet0/0                                                       
+ ip address 175.45.176.251 255.255.255.0                                        
+ no ip proxy-arp                                                                
+ ip nat outside                                                                 
+ ip virtual-reassembly in                                                       
+ duplex auto                                                                    
+ speed auto                                                                     
+!                                                                               
+interface FastEthernet0/1                                                       
+ no ip address                                                                  
+ no ip proxy-arp                                                                
+ shutdown                                                                       
+ duplex auto                                                                    
+ speed auto                                                                     
+!                                                                               
+interface FastEthernet0/0/0                                                     
+ no ip address                                                                  
+ no ip proxy-arp                                                                
+ duplex auto                                                                    
+ speed auto                                                                     
+!                                                                               
+interface FastEthernet0/0/0.2                                                   
+ encapsulation dot1Q 2                                                          
+ ip address 10.0.1.70 255.255.255.248                                           
+ ip helper-address 192.168.240.2                                                
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface FastEthernet0/0/0.3                                                   
+ encapsulation dot1Q 3                                                          
+ ip address 10.0.0.254 255.255.255.0                                            
+ ip helper-address 192.168.240.2                                                
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface FastEthernet0/0/0.4                                                   
+ encapsulation dot1Q 4                                                          
+ ip address 192.168.240.254 255.255.255.0                                       
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface FastEthernet0/0/0.5                                                   
+ encapsulation dot1Q 5                                                          
+ ip address 10.0.4.254 255.255.255.0                                            
+ ip helper-address 192.168.240.2                                                
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface FastEthernet0/0/0.6                                                   
+ encapsulation dot1Q 6                                                          
+ ip address 10.0.3.254 255.255.254.0                                            
+ ip helper-address 192.168.240.2                                                
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface FastEthernet0/0/0.7                                                   
+ encapsulation dot1Q 7                                                          
+ ip address 10.0.6.254 255.255.255.0                                            
+ ip helper-address 192.168.240.2                                                
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface FastEthernet0/0/0.8                                                   
+ encapsulation dot1Q 8                                                          
+ ip address 10.0.5.254 255.255.255.0                                            
+ ip helper-address 192.168.240.2                                                
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface FastEthernet0/0/0.9                                                   
+ encapsulation dot1Q 9                                                          
+ ip address 10.0.1.62 255.255.255.192                                           
+ ip helper-address 192.168.240.2                                                
+ ip nat inside                                                                  
+ ip virtual-reassembly in                                                       
+ no cdp enable                                                                  
+!                                                                               
+interface Serial0/3/0                                                           
+ no ip address                                                                  
+ shutdown                                                                       
+ clock rate 2000000                                                             
+!                                                                               
+ip forward-protocol nd                                                          
+no ip http server                                                               
+no ip http secure-server                                                        
+!                                                                               
+!                                                                               
+ip nat inside source list 1 interface FastEthernet0/0 overload                  
+ip route 0.0.0.0 0.0.0.0 175.45.176.254                                         
+!                                                                               
+logging esm config                                                              
+access-list 1 permit 10.0.1.64 0.0.0.7                                          
+access-list 1 permit 10.0.0.0 0.0.0.255                                         
+access-list 1 permit 192.168.240.0 0.0.0.255                                    
+access-list 1 permit 10.0.4.0 0.0.0.255                                         
+access-list 1 permit 10.0.2.0 0.0.1.255                                         
+access-list 1 permit 10.0.6.0 0.0.0.255                                         
+access-list 1 permit 10.0.5.0 0.0.0.255                                         
+access-list 1 permit 10.0.1.0 0.0.0.127                                         
+no cdp run                                                                      
+                                                                                
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+control-plane                                                                   
+!                                                                               
+!                                                                               
+!                                                                               
+mgcp fax t38 ecm                                                                
+!                                                                               
+mgcp profile default                                                            
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+!                                                                               
+line con 0                                                                      
+ logging synchronous                                                            
+line aux 0                                                                      
+line vty 0 4                                                                    
+ login                                                                          
+ transport input all                                                            
+!                                                                               
+scheduler allocate 20000 1000                                                   
+end 

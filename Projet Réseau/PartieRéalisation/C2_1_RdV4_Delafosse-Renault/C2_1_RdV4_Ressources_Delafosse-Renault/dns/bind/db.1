@@ -1,0 +1,23 @@
+$ORIGIN 240.168.192.in-addr.arpa.
+$TTL	604800
+@	IN	SOA	dns2.hs25.iut. root.hs25.iut. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	dns1.hs25.iut.
+2    IN  PTR dns1
+2    IN  PTR dhcp
+6    IN  PTR partage
+2    IN  PTR intra
+6    IN  PTR controleur
+6    IN  PTR dns2
+
+65    IN  PTR imprimante1
+    IN  PTR domotique1
+    IN  PTR teleision1
+    IN  PTR client1
+    IN  PTR telephone1
+    IN  PTR telephone2

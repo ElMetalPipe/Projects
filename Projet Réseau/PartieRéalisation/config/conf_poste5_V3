@@ -1,0 +1,185 @@
+##### conf routeur cisco ##### 
+2éme a configurer lors du début de tp (d'abord le switch)
+
+##### Commande a faire lors du démarage :
+conf t
+hostname r-main
+interface FastEthernet0/0
+ip address 175.45.176.251 255.255.255.0
+no shut
+exit
+interface FastEthernet0/0/0
+no shut
+exit
+interface FastEthernet0/0/0.2
+encapsulation dot1Q 2
+ip address 10.0.1.70 255.255.255.248
+ip helper-address 192.168.240.5 
+exit
+interface FastEthernet0/0/0.3
+encapsulation dot1Q 3
+ip address 10.0.0.254 255.255.255.0
+ip helper-address 192.168.240.5 
+exit
+interface FastEthernet0/0/0.4
+encapsulation dot1Q 4
+ip address 192.168.240.254 255.255.255.0
+exit
+interface FastEthernet0/0/0.5
+ encapsulation dot1Q 5
+ip address 10.0.4.254 255.255.255.0
+ip helper-address 192.168.240.5 
+exit
+interface FastEthernet0/0/0.6
+encapsulation dot1Q 6
+ip address 10.0.3.254 255.255.254.0
+ip helper-address 192.168.240.5 
+exit
+interface FastEthernet0/0/0.7
+encapsulation dot1Q 7
+ip address 10.0.6.254 255.255.255.0
+ip helper-address 192.168.240.5 
+exit
+interface FastEthernet0/0/0.8
+encapsulation dot1Q 8
+ip address 10.0.5.254 255.255.255.0
+ip helper-address 192.168.240.5 
+exit
+interface FastEthernet0/0/0.9
+encapsulation dot1Q 9
+ip address 10.0.1.62 255.255.255.192
+ip helper-address 192.168.240.5  
+exit
+ip route 0.0.0.0 0.0.0.0 175.45.176.254
+ip routing
+
+##### Commande faite pour ça conf
+Router#conf t
+Router(config)#int fastEthernet0/0                                              
+Router(config-if)#ip address 175.45.176.251 255.255.255.0                       
+Router(config-if)#no shut
+Router(config-if)#ip route 0.0.0.0 0.0.0.0 175.45.176.254
+Router(config)#interface fastEthernet 0/0/0                                     
+Router(config-if)#no shut                                                       
+Router(config-if)#interface fastEthernet 0/0/0.3                                
+Router(config-subif)#ip address 10.0.0.254 255.255.255.0     
+Router(config-subif)#encapsulation dot1Q 3 
+Router(config-subif)#exit                                                       
+Router(config)#interface fastEthernet 0/0/0.4                                   
+Router(config-subif)#encapsulation dot1Q 4                                      
+Router(config-subif)#ip address 192.168.240.254 255.255.255.0                   
+Router(config-subif)#exit                                                       
+Router(config)#interface fastEthernet 0/0/0.6                                   
+Router(config-subif)#encapsulation dot1Q 6                                      
+Router(config-subif)#ip address 10.0.3.254 255.255.254.0                        
+Router(config-subif)#exit                                                       
+Router(config)#interface fastEthernet 0/0/0.9     
+Router(config-subif)#encapsulation dot1Q 9                                      
+Router(config-subif)#ip address 10.0.1.62 255.255.255.192                       
+Router(config-subif)#exit 
+Router(config)#int fastEthernet0/0/0.2 
+Router(config-subif)#encapsulation dot1Q 2
+Router(config-subif)#ip address 10.0.1.70 255.255.255.248  
+Router(config-subif)#exit                                                       
+Router(config)#int fastEthernet0/0/0.5                                          
+Router(config-subif)#encapsulation dot1Q 5                                      
+Router(config-subif)#ip address 10.0.1.70 255.255.255.0
+Router(config)#int fastEthernet0/0/0.7                                          
+Router(config-subif)#encapsulation dot1Q 7                                      
+Router(config-subif)#ip address 10.0.6.254 255.255.255.0                        
+Router(config-subif)#exit                                                       
+Router(config)#int fastEthernet0/0/0.8                                          
+Router(config-subif)#encapsulation dot1Q 8                                      
+Router(config-subif)#ip address 10.0.5.254 255.255.255.0                        
+Router(config-subif)#exit   
+
+##### conf switch aruba s-main ##### 
+1er a configurer lors du début de tp
+
+##### Commande a faire lors du démarage :
+conf t                                                                       
+vlan 2                                                                          
+   name "VLAN2"  
+   untagged 2-4                                                                
+   tagged   23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 3                                                                          
+   name "VLAN3"                                                                 
+   untagged 5-7                                                            
+   tagged   23-24                                                        
+   no ip address                                                                
+   exit                                                                         
+vlan 4                                                                          
+   name "VLAN4"                                                                 
+   untagged 22                                                      
+   tagged   23-24                                                         
+   no ip address                                                                
+   exit                                                                         
+vlan 5                                                                          
+   name "VLAN5"   
+   untagged 8-10                                                       
+   tagged   23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 6                                                                          
+   name "VLAN6"                                                                 
+   untagged 11-13                                                                
+   tagged   23-24                                                     
+   no ip address                                                                
+   exit                                                                         
+vlan 7                                                                          
+   name "VLAN7"   
+   untagged 14-16                                                                
+   tagged   23-24                                                                
+   no ip address                                                                
+   exit                                                                         
+vlan 8                                                                          
+   name "VLAN8"     
+   untagged 17-19                                                                
+   tagged   23-24                                                              
+   no ip address                                                                
+   exit                                                                         
+vlan 9                                                                          
+   name "VLAN9"                                                                 
+   untagged 20-21                                                              
+   tagged   23-24                                                           
+   no ip address                                                                
+   exit                      
+
+##### Commande faite pour ça conf (ancienne)
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 3
+Aruba-2930F-24G-PoEP-4SFP(vlan-3)# untagged 2-14     
+Aruba-2930F-24G-PoEP-4SFP(vlan-3)# tagged 23-24,15-17
+Aruba-2930F-24G-PoEP-4SFP(vlan-3)# exit     
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 9                                       
+Aruba-2930F-24G-PoEP-4SFP(vlan-9)# tagged 15-17,23-24                           
+Aruba-2930F-24G-PoEP-4SFP(vlan-9)# exit                                         
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 6                                       
+Aruba-2930F-24G-PoEP-4SFP(vlan-6)# tagged 15-17,23-24                           
+Aruba-2930F-24G-PoEP-4SFP(vlan-6)# exit 
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 4   
+Aruba-2930F-24G-PoEP-4SFP(vlan-4)# untagged 22                                  
+Aruba-2930F-24G-PoEP-4SFP(vlan-4)# tagged 15-17,23-24                           
+Aruba-2930F-24G-PoEP-4SFP(vlan-4)# exit
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 2                                       
+Aruba-2930F-24G-PoEP-4SFP(vlan-2)# exit                                         
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 5                                       
+Aruba-2930F-24G-PoEP-4SFP(vlan-5)# exit                                         
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 7                                       
+Aruba-2930F-24G-PoEP-4SFP(vlan-7)# exit                                         
+Aruba-2930F-24G-PoEP-4SFP(config)# vlan 8                                       
+Aruba-2930F-24G-PoEP-4SFP(vlan-8)# exit                                         
+Aruba-2930F-24G-PoEP-4SFP(config)# sh run
+                     
+                     
+                     
+# @-MAC serveur rez-de-chaussée : 2c:58:b9:10:26:6c
+# @-MAC serveur étage : 2c:58:b9:10:2b:1e
+#  range 192.168.240.0 192.168.240.10;    ligne pour le dynamic (test)
+#  host servrez {
+#    hardware ethernet 2c:58:b9:10:26:6c;
+#    fixed-address 192.168.240.1; }
+#  host servetage {
+#    hardware ethernet 2c:58:b9:10:2b:1e;
+#    fixed-address 192.168.240.2;  }

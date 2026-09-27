@@ -1,0 +1,6 @@
+AuthUserFile /etc/apache2/.htpasswd
+AuthName "Accès privée"
+AuthType Basic
+<limite GET>
+    require valid-user
+</limite>

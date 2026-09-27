@@ -1,0 +1,65 @@
+S-etage-aruba1(config)# sh run                                                  
+                                                                                
+Running configuration:                                                          
+                                                                                
+; JL261A Configuration Editor; Created on release #WC.16.07.0003                
+; Ver #14:01.4f.f8.1d.9b.3f.bf.bb.ef.7c.59.fc.6b.fb.9f.fc.ff.ff.37.ef:02        
+hostname "S-etage-aruba1"                                                       
+module 1 type jl261a                                                            
+snmp-server community "public" unrestricted                                     
+vlan 1                                                                          
+   name "DEFAULT_VLAN"                                                          
+   no untagged 2-22                                                             
+   untagged 1,23-28                                                             
+   ip address dhcp-bootp                                                        
+   ipv6 enable                                                                  
+   ipv6 address dhcp full                                                       
+   exit                                                                         
+vlan 2                                                                          
+   name "VLAN2"                                                                 
+   untagged 2-4                                                                 
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 3                                                                          
+   name "VLAN3"                                                                 
+   untagged 5-7                                                                 
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 4                                                                          
+   name "VLAN4"                                                                 
+   untagged 22                                                                  
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 5                                                                          
+   name "VLAN5"                                                                 
+   untagged 8-10                                                                
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 6                                                                          
+   name "VLAN6"                                                                 
+   untagged 11-13                                                               
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 7                                                                          
+   name "VLAN7"                                                                 
+   untagged 14-16                                                               
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 8                                                                          
+   name "VLAN8"                                                                 
+   untagged 17-19                                                               
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         
+vlan 9                                                                          
+   name "VLAN9"                                                                 
+   untagged 20-21                                                               
+   tagged 23-24                                                                 
+   no ip address                                                                
+   exit                                                                         

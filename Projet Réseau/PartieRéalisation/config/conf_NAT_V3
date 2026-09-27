@@ -1,0 +1,56 @@
+##### configuration NAT #####  
+
+## commande faite (sur routeur) : 
+r-main(config)#access-list 1 permit 10.0.0.0 0.0.0.255
+r-main(config)#ip nat pool 1 175.45.176.1 175.45.176.253 netmask 255.255.255.0
+r-main(config)#ip nat inside source list 1 interface FastEthernet0/0/0 overload
+r-main(config)#ip nat outside source list 1 interface FastEthernet0/0
+r-main(config)#interface FastEthernet0/0/0.3
+r-main(config-subif)#ip nat inside
+ r-main(config)#ex
+r-main(config)#interface FastEthernet0/0/0
+r-main(config-subif)#ip nat inside
+r-main(config)#ex
+r-main(config)#interface FastEthernet0/0
+r-main(config-subif)#ip nat outside
+r-main(config)#ex
+
+#r-main(config)#ip nat pool f 175.45.176.251 netmask 255.255.255.0
+
+## conf a metre sur le routeur (avec l'aide de Claude) : 
+
+access-list 1 permit 10.0.1.64 0.0.0.15
+access-list 1 permit 10.0.0.0 0.0.0.255
+access-list 1 permit 192.168.240.0 0.0.0.255
+access-list 1 permit 10.0.4.0 0.0.0.255
+access-list 1 permit 10.0.2.0 0.0.1.255
+access-list 1 permit 10.0.6.0 0.0.0.255
+access-list 1 permit 10.0.5.0 0.0.0.255
+access-list 1 permit 10.0.1.0 0.0.0.127
+ip nat inside source list 1 interface FastEthernet0/0 overload
+interface FastEthernet0/0/0.2
+ip nat inside
+exit
+interface FastEthernet0/0/0.3
+ip nat inside
+exit
+interface FastEthernet0/0/0.4
+ip nat inside
+exit
+interface FastEthernet0/0/0.5
+ip nat inside
+exit
+interface FastEthernet0/0/0.6
+ip nat inside
+exit
+interface FastEthernet0/0/0.7
+ip nat inside
+exit
+interface FastEthernet0/0/0.8
+ip nat inside
+exit
+interface FastEthernet0/0/0.9
+ip nat inside
+exit
+interface FastEthernet0/0
+ip nat outside
